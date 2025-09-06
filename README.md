@@ -1,9 +1,4 @@
 # 🏆 EcoFinds - Sustainable Marketplace Platform
-### COR Hackathon Virtual Round Submission
-
-> **Revolutionizing e-commerce through sustainability** - A complete full-stack marketplace platform that makes eco-friendly shopping accessible to everyone.
-
----
 
 ## 🎯 **Hackathon Challenge Response**
 
