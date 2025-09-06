@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { productsAPI } from '../utils/api';
+import ImageUpload from '../components/ImageUpload';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -106,6 +107,7 @@ const AddProduct: React.FC = () => {
     price: '',
     category: '',
     condition: 'Good',
+    imageUrl: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -132,6 +134,10 @@ const AddProduct: React.FC = () => {
     }));
   };
 
+  const handleImageUpload = (imageUrl: string) => {
+    setFormData(prev => ({ ...prev, imageUrl }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -150,6 +156,7 @@ const AddProduct: React.FC = () => {
         price: parseFloat(formData.price),
         category: formData.category,
         condition: formData.condition,
+        imageUrl: formData.imageUrl || '/uploads/placeholder.svg',
       });
       
       navigate('/my-listings');
@@ -223,6 +230,12 @@ const AddProduct: React.FC = () => {
             required
           />
         </FormGroup>
+
+        <ImageUpload
+          onImageUpload={handleImageUpload}
+          currentImage={formData.imageUrl}
+          multiple={false}
+        />
 
         <FormGroup>
           <Label htmlFor="description">Description *</Label>

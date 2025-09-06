@@ -1,8 +1,11 @@
 const bcrypt = require('bcryptjs');
 const dataStore = require('./dataStore');
+const createProductPlaceholders = require('./createPlaceholders');
 
 async function initializeSampleData() {
   try {
+    // Create placeholder images first
+    createProductPlaceholders();
     // Create sample users
     const hashedPassword = await bcrypt.hash('password123', 10);
     
@@ -45,7 +48,8 @@ async function initializeSampleData() {
         category: 'Clothing & Accessories',
         condition: 'Like New',
         sellerId: user1.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/leather-jacket.svg',
+        images: ['/uploads/leather-jacket.svg'],
         status: 'available'
       },
       {
@@ -55,7 +59,8 @@ async function initializeSampleData() {
         category: 'Electronics',
         condition: 'Good',
         sellerId: user2.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/macbook.svg',
+        images: ['/uploads/macbook.svg'],
         status: 'available'
       },
       {
@@ -65,7 +70,8 @@ async function initializeSampleData() {
         category: 'Home & Garden',
         condition: 'Good',
         sellerId: user3.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/coffee-table.svg',
+        images: ['/uploads/coffee-table.svg'],
         status: 'available'
       },
       {
@@ -75,7 +81,8 @@ async function initializeSampleData() {
         category: 'Books & Media',
         condition: 'Fair',
         sellerId: user1.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/books.svg',
+        images: ['/uploads/books.svg'],
         status: 'available'
       },
       {
@@ -85,7 +92,8 @@ async function initializeSampleData() {
         category: 'Sports & Outdoors',
         condition: 'Like New',
         sellerId: user2.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/tennis-racket.svg',
+        images: ['/uploads/tennis-racket.svg'],
         status: 'available'
       },
       {
@@ -95,7 +103,8 @@ async function initializeSampleData() {
         category: 'Toys & Games',
         condition: 'Good',
         sellerId: user3.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/lego-set.svg',
+        images: ['/uploads/lego-set.svg'],
         status: 'available'
       },
       {
@@ -105,7 +114,8 @@ async function initializeSampleData() {
         category: 'Automotive',
         condition: 'Good',
         sellerId: user1.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/car-mats.svg',
+        images: ['/uploads/car-mats.svg'],
         status: 'available'
       },
       {
@@ -115,7 +125,8 @@ async function initializeSampleData() {
         category: 'Health & Beauty',
         condition: 'New',
         sellerId: user2.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/face-cream.svg',
+        images: ['/uploads/face-cream.svg'],
         status: 'available'
       },
       {
@@ -125,7 +136,8 @@ async function initializeSampleData() {
         category: 'Electronics',
         condition: 'Good',
         sellerId: user3.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/vintage-camera.svg',
+        images: ['/uploads/vintage-camera.svg'],
         status: 'available'
       },
       {
@@ -135,7 +147,8 @@ async function initializeSampleData() {
         category: 'Home & Garden',
         condition: 'Good',
         sellerId: user1.id,
-        imageUrl: '/uploads/placeholder.jpg',
+        imageUrl: '/uploads/garden-tools.svg',
+        images: ['/uploads/garden-tools.svg'],
         status: 'available'
       }
     ];

@@ -90,6 +90,7 @@ export const productsAPI = {
     price: number;
     category: string;
     condition?: string;
+    imageUrl?: string;
   }) => api.post('/products', productData),
   
   updateProduct: (id: string, productData: {
@@ -98,6 +99,7 @@ export const productsAPI = {
     price?: number;
     category?: string;
     condition?: string;
+    imageUrl?: string;
   }) => api.put(`/products/${id}`, productData),
   
   deleteProduct: (id: string) => api.delete(`/products/${id}`),
@@ -117,6 +119,23 @@ export const cartAPI = {
     api.put(`/cart/update/${productId}`, { quantity }),
   
   clearCart: () => api.delete('/cart/clear'),
+};
+
+// Images API
+export const imagesAPI = {
+  uploadImage: (formData: FormData) => api.post('/images/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
+  
+  uploadMultiple: (formData: FormData) => api.post('/images/upload/multiple', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
+  
+  deleteImage: (filename: string) => api.delete(`/images/${filename}`),
 };
 
 // Purchase API

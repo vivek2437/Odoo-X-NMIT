@@ -312,16 +312,23 @@ const ProductListItem = styled.div`
   }
 `;
 
-const ListProductImage = styled.div`
+const ListProductImage = styled.div<{ hasImage?: boolean }>`
   width: 150px;
   height: 120px;
-  background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+  background: ${props => props.hasImage ? 'transparent' : 'linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%)'};
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   position: relative;
   border-radius: 8px 0 0 8px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ListProductInfo = styled.div`
@@ -368,15 +375,22 @@ const ProductCard = styled.div`
   }
 `;
 
-const ProductImage = styled.div`
+const ProductImage = styled.div<{ hasImage?: boolean }>`
   height: 200px;
-  background: linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%);
+  background: ${props => props.hasImage ? 'transparent' : 'linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%)'};
   display: flex;
   align-items: center;
   justify-content: center;
   color: #4CAF50;
   font-size: 3rem;
   position: relative;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ProductBadge = styled.div`
@@ -491,6 +505,8 @@ interface Product {
   price: number;
   category: string;
   condition: string;
+  imageUrl?: string;
+  images?: string[];
   seller: {
     id: string;
     username: string;
@@ -677,8 +693,17 @@ const Marketplace: React.FC = () => {
 
   const renderProductCard = (product: Product) => (
     <ProductCard key={product.id}>
-      <ProductImage>
-        📦
+      <ProductImage hasImage={!!product.imageUrl}>
+        {product.imageUrl ? (
+          <img src={product.imageUrl} alt={product.title} onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.style.display = 'none';
+            img.parentElement!.style.background = 'linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%)';
+            img.parentElement!.innerHTML = '📦<div class="product-badge" style="position: absolute; top: 10px; right: 10px; background: #4CAF50; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">' + product.condition + '</div>';
+          }} />
+        ) : (
+          '📦'
+        )}
         <ProductBadge>{product.condition}</ProductBadge>
       </ProductImage>
       <ProductInfo>
@@ -712,8 +737,17 @@ const Marketplace: React.FC = () => {
 
   const renderProductListItem = (product: Product) => (
     <ProductListItem key={product.id}>
-      <ListProductImage>
-        📦
+      <ListProductImage hasImage={!!product.imageUrl}>
+        {product.imageUrl ? (
+          <img src={product.imageUrl} alt={product.title} onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.style.display = 'none';
+            img.parentElement!.style.background = 'linear-gradient(135deg, #E8F5E8 0%, #C8E6C9 100%)';
+            img.parentElement!.innerHTML = '📦<div class="product-badge" style="position: absolute; top: 10px; right: 10px; background: #4CAF50; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">' + product.condition + '</div>';
+          }} />
+        ) : (
+          '📦'
+        )}
         <ProductBadge>{product.condition}</ProductBadge>
       </ListProductImage>
       <ListProductInfo>
