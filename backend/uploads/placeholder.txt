@@ -1,0 +1,6 @@
+This directory contains placeholder images for products.
+
+In a real application, this would contain uploaded product images.
+For now, we're using emoji placeholders (📦) in the UI.
+
+Future enhancement: Add actual image upload functionality with multer middleware.
