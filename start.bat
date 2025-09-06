@@ -14,6 +14,7 @@ echo.
 echo Wait for both servers to start, then open http://localhost:3000 in your browser
 echo.
 
+
 start "EcoFinds Backend" cmd /k "cd backend && npm run dev"
 timeout /t 3
 start "EcoFinds Frontend" cmd /k "cd frontend && npm start"
