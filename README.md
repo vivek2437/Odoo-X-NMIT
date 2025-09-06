@@ -267,14 +267,6 @@ Unlike typical hackathon demos, EcoFinds provides a **complete, end-to-end solut
 
 <div align="center">
 
-## 🏆 **Ready to Change the World** 🌍
-
-### *EcoFinds: Where Sustainability Meets Innovation*
-
-**Built with 💚 for COR Hackathon Virtual Round**
-
----
-
 *Thank you for considering EcoFinds for the COR Hackathon. We're excited to demonstrate how technology can drive positive environmental impact while delivering exceptional user experiences.*
 
 </div>
